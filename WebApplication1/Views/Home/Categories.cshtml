@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WebApplication1.Models.Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title.</h2>
+<div class="category">
+    <table>
+        @{ 
+            int i = 1;
+            foreach(var item in Model)
+            {
+                <tr class="home_tr">
+                    <td>@i. @Html.DisplayFor(model => item.CategoryName)</td>
+                </tr>
+                i++;
+            }
+        }
+    </table>
+</div>
+

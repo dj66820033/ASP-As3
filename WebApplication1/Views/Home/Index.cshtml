@@ -1,31 +1,35 @@
-﻿@{
+﻿@model IEnumerable<WebApplication1.Models.Question>
+
+@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div>
+    <h3>Hello, @Session["UserName"].  <a href="@Url.Action("Logout")" style="color:mediumpurple">Logout</a></h3>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="jumbotron">
+    <h2>Learn, Share, Build!</h2>
+    <h3>Each month, over 50 million developers come to Stack Overflow to learn, share their knowledge, and build their careers.</h3>
+    <h4 style="color:#808080">Join the world's largest developer community.</h4>
+</div>
+
+<div>
+    <table class="home_table">
+        @foreach (var item in Model)
+        {
+        <tr class="home_tr">
+            <td class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => item.vote)</span>Votes</td>
+            <td class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => item.ans_ed)</span>Answers</td>
+            <td class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => item.viewnum)</span>Views</td>
+            <td class="home_td2">
+                @Html.ActionLink(item.QuestionName.ToString(), "GetQuestion", "Question", new { id = item.QuestionID }, null)<br />
+                <span class="home_td_txt2">@Html.DisplayFor(modelItem => item.CategoryName)</span>
+            </td>
+            <td class="home_td">by @Html.DisplayFor(modelItem => item.UserName)</td>
+            <td class="home_td">on @Html.DisplayFor(modelItem => item.QuestionTime)</td>
+        </tr>
+        }
+    </table>
 </div>

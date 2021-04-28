@@ -9,21 +9,16 @@ namespace WebApplication1.Models
     [Table("Answer")]
     public partial class Answer
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AnswerID { get; set; }
 
-        [Required]
         [StringLength(5000)]
         public string AnswerText { get; set; }
 
-        [Required]
         public DateTime? AnswerTime { get; set; }
 
-        [Required]
         public int? QuestionID { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string username { get; set; }
     }

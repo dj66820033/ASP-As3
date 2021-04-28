@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebApplication1.Models.Question>
+
+@{
+    ViewBag.Title = "Question";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<div class="category">
+    <table  class="home_table">
+        @foreach (var item in Model)
+        {
+            <tr class="home_tr">
+                <td class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => item.vote)</span>Votes</td>
+                <td class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => item.ans_ed)</span>Answers</td>
+                <td class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => item.viewnum)</span>Views</td>
+                <td class="home_td2">
+                    @Html.ActionLink(item.QuestionName.ToString(), "GetQuestion", "Question", new { id = item.QuestionID }, null)<br />
+                    <span class="home_td_txt2">@Html.DisplayFor(modelItem => item.CategoryName)</span>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

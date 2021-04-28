@@ -251,9 +251,10 @@ th {
   .label {
     border: 1px solid #000;
   }
-  .table {
-    border-collapse: collapse !important;
-  }
+
+    .table {
+        border-collapse: collapse !important;
+    }
   .table td,
   .table th {
     background-color: #fff !important;
@@ -4412,6 +4413,47 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .btn_search {
     color: white;
     background-color: #1D8F42;
+}
+
+.home_table {
+    width: 100%;
+    height: auto;
+}
+
+.home_tr {
+    border-top: 1px solid #ddd;
+    width: 100%;
+}
+
+.home_td {
+    padding-right: 10px;
+    color: darkgrey;
+}
+
+.home_td2 {
+    padding-right: 30px;
+    color: cornflowerblue;
+}
+
+.home_td_txt {
+    background-color: darkgrey;
+    color: white;
+    margin-right: 3px;
+    padding:3px;
+    border-radius: 5px;
+}
+
+.home_td_txt2 {
+    background-color: lightseagreen;
+    color: white;
+    margin-top: 3px;
+    border-radius: 5px;
+    padding:3px;
+}
+
+.category {
+    width: 100%;
+    padding: 20px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {

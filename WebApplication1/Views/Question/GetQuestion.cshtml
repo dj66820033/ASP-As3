@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Models.Question>
+
+@{
+    ViewBag.Title = "GetQuestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var question in Model)
+{
+    using (Html.BeginForm("addAnswer", "Question", FormMethod.Post))
+    {
+        @Html.HiddenFor(Qmodel => question.QuestionID);
+        <div>
+            <h2>@Html.DisplayFor(modelItem => question.QuestionName)</h2>
+            <p>
+                <span class="home_td home_td_txt2">@Html.DisplayFor(modelItem => question.CategoryName)</span>
+                <span class="home_td">by @Html.DisplayFor(modelItem => question.UserName)</span>
+                <span class="home_td">on @Html.DisplayFor(modelItem => question.QuestionTime)</span>
+                <span class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => question.viewnum)</span>Views</span>
+                <span class="home_td"><span class="home_td_txt">@Html.DisplayFor(modelItem => question.vote)</span>Votes</span>
+            </p>
+        </div>
+
+        <div>
+            @foreach (var answer in question.answers)
+            {
+            <p>
+                <span class="home_td">@Html.DisplayFor(answers => answer.AnswerText)</span>
+                <span class="home_td">by @Html.DisplayFor(answers => answer.username)</span>
+                <span class="home_td">on @Html.DisplayFor(answers => answer.AnswerTime)</span>
+                @if(@Session["UserName"].Equals(answer.username)){
+                <button class="btn_search" type="button">Edit</button>
+                }
+            </p>
+            }
+            
+        </div>
+
+        <div>
+            <h3>Add your answer</h3>
+            @Html.TextAreaFor(answerText => question.answer.AnswerText)<br />
+            <button class="btn_search" type="submit">Add Answer</button>
+        </div>
+    }
+}
